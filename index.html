@@ -7,7 +7,8 @@
 <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='photo/newlogo.png') }}">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
-<body> 
+<body>
+<div class="displaydiv">
   <img src="https://avatars.mds.yandex.net/i?id=cdfa9d20de81912234f9b3edbc8e061750c705dd-9026739-images-thumbs&n=13" class="logo">
   <div class="display">
     <div class="number">1</div>
@@ -28,5 +29,49 @@
     <button class="button" id="2">2</button>
     <button class="button" id="3">3</button>
   </div>
+ </div>
 </body>
+<script>
+window.onload = function() {
+var password = "2345";
+
+
+var number = document.querySelectorAll('.number');
+var var2 = 0;
+function rpass(var1) {
+	if(var2 == 0 && password.substr(0, 1) == var1) {
+    	number[0].textContent = var1;
+        var2 = 1;
+	}
+    
+    if(var2 == 1 && password.substr(1, 1) == var1) {
+    	number[1].textContent = var1;
+        var2 = 2;
+	}
+    
+    if(var2 == 2 && password.substr(2, 1) == var1) {
+    	number[2].textContent = var1;
+        var2 = 3;
+	}
+    
+    if(var2 == 3 && password.substr(3, 1) == var1) {
+    	number[3].textContent = var1;
+        var2 = 4;
+	}
+}
+var btn = document.querySelectorAll('button');
+	for(let i = 0; i < btn.length; i++) {
+		btn[i].style.height = btn[i].offsetWidth + "px";
+        btn[i].onclick = function() {
+         rpass(btn[i].textContent);
+		}
+	}
+}
+window.onresize = function() {
+var btn = document.querySelectorAll('button');
+	for(let i = 0; i < btn.length; i++) {
+		btn[i].style.height = btn[i].offsetWidth + "px";
+	}
+}
+</script>
 </html>
